@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RK Bhojnalaya & Juice Center - Delicious Food & Fresh Juices</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff4757 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #2ed573, #1e90ff);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255,107,53,0.2);
+        }
+
+        .menu-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .menu-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #27ae60;
+        }
+
+        .whatsapp-section {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .whatsapp-btn {
+            background: white;
+            color: #25d366;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: floatUpDown 6s ease-in-out infinite;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating-emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-emoji:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-emoji:nth-child(3) { top: 60%; left: 5%; animation-delay: 2s; }
+        .floating-emoji:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .floating-emoji:nth-child(5) { bottom: 40%; left: 20%; animation-delay: 4s; }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-emoji">🍜</div>
+        <div class="floating-emoji">🧃</div>
+        <div class="floating-emoji">🍛</div>
+        <div class="floating-emoji">🥗</div>
+        <div class="floating-emoji">🍲</div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">🌟 RK Bhojnalaya & Juice Center 🌟</h1>
+            <p class="tagline">Your go-to spot for delicious meals and refreshing drinks in Phulwari Sarif, Patna!</p>
+            <a href="tel:+917903547986" class="cta-button">📞 Contact Us Now</a>
+            
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">📍 Find Us & Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Our Location</h3>
+                    <p>Opposite AIIMS Gate No 4<br>Walmi, Phulwari Sarif, Patna</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Contact Details</h3>
+                    <p>Phone / WhatsApp:<br><strong>+91 79035 47986</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🍽 Our Delicious Menu Highlights</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <span class="menu-emoji">🍜</span>
+                    <h3 class="menu-title">Authentic Chinese</h3>
+                    <p>Delicious Chinese delicacies prepared with authentic flavors</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-emoji">🍛</span>
+                    <h3 class="menu-title">Flavorful Biryani</h3>
+                    <p>Various biryani varieties that will tantalize your taste buds</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-emoji">🥗</span>
+                    <h3 class="menu-title">Fresh Veg Thalis</h3>
+                    <p>Complete vegetarian meals with fresh, healthy ingredients</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-emoji">🧃</span>
+                    <h3 class="menu-title">Fresh Juices</h3>
+                    <p>Freshly squeezed fruit juices & refreshing beverages</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-emoji">🍲</span>
+                    <h3 class="menu-title">Indian Cuisine</h3>
+                    <p>Traditional North & South Indian meals prepared with love</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">⭐ Why Choose RK Vojnalaya?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <h3>Top Quality</h3>
+                    <p>Fresh ingredients in every meal made with care</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧼</div>
+                    <h3>Hygienic</h3>
+                    <p>Safe food preparation with highest hygiene standards</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏱</div>
+                    <h3>Fast Service</h3>
+                    <p>Quick & friendly service because we value your time</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Affordable</h3>
+                    <p>Great prices that fit every budget</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Satisfaction</h3>
+                    <p>Customer satisfaction is our top priority</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="whatsapp-section">
+        <div class="container">
+            <h2>💬 Ready to Order?</h2>
+            <p>Send us a message on WhatsApp and we'll share our complete menu with special offers!</p>
+            <a href="https://wa.me/917903547986?text=Hello%20RK%20Bhojnalaya%20Team%2C%0AI%27m%20excited%20to%20try%20your%20food%20and%20juices%21%20Please%20share%20your%20menu%20and%20offers.%20Thank%20you%21" 
+   class="whatsapp-btn" target="_blank">
+    🟢 Chat with us on WhatsApp!
+</a>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h3>🌟 RK Vojnalaya & Juice Center 🌟</h3>
+            <p>Serving delicious food and fresh juices with love since day one!</p>
+            <p style="margin-top: 20px; opacity: 0.8;">📍 Opposite AIIMS Gate No 4, Walmi, Phulwari Sarif, Patna | 📞 +91 79035 47986</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all menu items and cards
+        document.querySelectorAll('.menu-item, .contact-card, .feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add dynamic background colors to menu items
+        const menuItems = document.querySelectorAll('.menu-item');
+        const colors = ['#ff9ff3', '#54a0ff', '#5f27cd', '#00d2d3', '#ff9f43'];
+        
+        menuItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                item.style.background = `linear-gradient(135deg, ${colors[index % colors.length]}22, white)`;
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.background = 'white';
+            });
+        });
+    </script>
+</body>
+</html>
