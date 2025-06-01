@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RK Bhojnalaya & Juice Center - Delicious Food & Fresh Juices</title>
-           <style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -287,6 +287,22 @@
             opacity: 0.1;
             animation: floatUpDown 6s ease-in-out infinite;
         }
+
+        @media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+
+    .footer-map {
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    .footer-info {
+        text-align: center;
+    }
+}
+
 
         @keyframes floatUpDown {
             0%, 100% { transform: translateY(0px); }
